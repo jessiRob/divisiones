@@ -1,4 +1,4 @@
-def divide (numerador, divisor):
+def divide2 (numerador, divisor):
   i = 0
   encontrado = False
   while (i<numerador) and encontrado == False:
@@ -17,30 +17,24 @@ def divide (numerador, divisor):
     i +=1
   return ((i-1),r)
 
-def mcd (num1,num2):
-  a = num1
-  b = num2
-  divisores = []
-  div = 1
-  while (a > 1) and (b > 1) and (div <= num1) and (div <= num2):
-    a,r1 = divide(a,div)
-    b,r2 = divide(b,div)
-    print(div, a,r1,b,r2)
-    if (a == b) and (r1 == 0) and (r2 == 0):
-      divisores.append(div)
-      print(divisores)
-      div = 1
-    div +=1
-    print(div)
-    print((a > 1) and (b > 1))
-  divisores.sort()
-  return divisores[0]
+def divide (dividend, divisor):
+  quotient = 0
+  while dividend >= divisor:
+    dividend -= divisor
+    quotient +=1
+  return (dividend,quotient)#Estan al reves
 
-lt = [1,2]
-print (lt[-1])
+def gcd(int1, int2 ):		
+		while( int1 != int2 ):
+			if( int1 > int2 ):
+				int1 -= int2;
+			else:
+				int2 -= int1
+		return int1;
 
-x = 2
-y = 6
+x = 100
+y = 2
+print(divide2(x,y))
 print(divide(x,y))
 print(x //y, x%y)
-print(mcd(6,3))
+print(gcd(6,3))
