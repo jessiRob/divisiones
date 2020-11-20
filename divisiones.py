@@ -1,3 +1,4 @@
+import math
 def divide2 (numerador, divisor):
   i = 0
   encontrado = False
@@ -32,9 +33,49 @@ def gcd(int1, int2 ):
 				int2 -= int1
 		return int1;
 
-x = 100
-y = 2
-print(divide2(x,y))
-print(divide(x,y))
-print(x //y, x%y)
-print(gcd(6,3))
+
+def num_phi(n):
+  x=nextPrime(0)
+  pi = n
+  while x <= n:
+    if n%x == 0:
+      pi = pi * (1-(1/x))
+      print(x,pi)
+    x=int(nextPrime(x))
+  return pi
+
+def isPrime(n):
+    # Corner cases
+    if(n <= 1):
+        return False
+    if(n <= 3):
+        return True
+
+    if(n % 2 == 0 or n % 3 == 0):
+        return False
+
+    for i in range(5, int(math.sqrt(n) + 1), 6):
+        if(n % i == 0 or n % (i + 2) == 0):
+            return False
+
+    return True
+
+def nextPrime(N):
+    # Base case
+    if (N <= 1):
+        return 2
+    prime = int(N)
+    found = False
+    # Loop continuously until isPrime returns
+    # True for a number greater than n
+    while(not found):
+        prime = prime + 1
+        if(isPrime(prime) is True):
+            found = True
+    return int(prime)
+
+#print(num_phi(51))
+#print(divide2(x,y))
+#print(divide(x,y))
+#print(x //y, x%y)
+#print(gcd(6,3))
